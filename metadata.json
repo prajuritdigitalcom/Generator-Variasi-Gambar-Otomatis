@@ -1,0 +1,6 @@
+{
+  "name": "Generator Variasi Gambar Otomatis",
+  "description": "Ubah 1 gambar menjadi puluhan variasi unik dengan frame warna-warni otomatis berbasis Engine 1, 2, dan 3. Unduh bundel ZIP instan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
