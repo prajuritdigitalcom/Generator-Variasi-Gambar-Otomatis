@@ -1,13 +1,8 @@
 import React from 'react';
 import { BRAND_LOGO_URL } from '../lib/constants';
-import { Sparkles, ShieldCheck, Zap } from 'lucide-react';
+import { ShieldCheck, Zap } from 'lucide-react';
 
-interface HeaderProps {
-  onOpenFaq?: () => void;
-  onOpenDocs?: () => void;
-}
-
-export const Header: React.FC<HeaderProps> = ({ onOpenFaq, onOpenDocs }) => {
+export const Header: React.FC = () => {
   return (
     <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-rose-100 shadow-xs">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
@@ -33,15 +28,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenFaq, onOpenDocs }) => {
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-lg sm:text-xl font-extrabold tracking-tight text-gray-900">
-                Prajurit <span className="text-[#fe4c6f]">Digital</span>
+                Gambar Unik <span className="text-[#fe4c6f]">Generator</span>
               </h1>
               <span className="hidden xs:inline-flex items-center gap-1 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-[#fff0f3] text-[#fe4c6f] border border-[#fe4c6f]/20">
                 v1.0 Pro
               </span>
             </div>
-            <p className="text-xs text-gray-500 font-medium hidden sm:block">
-              Generator Variasi Frame Gambar Otomatis
-            </p>
           </div>
         </div>
 
@@ -57,25 +49,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenFaq, onOpenDocs }) => {
               Maks 100 Output / Batch
             </span>
           </div>
-
-          {onOpenFaq && (
-            <button
-              onClick={onOpenFaq}
-              className="text-xs sm:text-sm font-semibold text-gray-700 hover:text-[#fe4c6f] px-3 py-1.5 rounded-lg hover:bg-rose-50 transition-colors"
-            >
-              Panduan & FAQ
-            </button>
-          )}
-
-          {onOpenDocs && (
-            <button
-              onClick={onOpenDocs}
-              className="inline-flex items-center gap-1 text-xs sm:text-sm font-bold bg-[#fe4c6f] text-white hover:bg-[#e63958] px-3.5 py-1.5 rounded-xl shadow-xs transition-colors"
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Info Engine</span>
-            </button>
-          )}
         </div>
       </div>
     </header>

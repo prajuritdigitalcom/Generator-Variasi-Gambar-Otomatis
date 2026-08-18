@@ -14,14 +14,12 @@ import { PreviewGrid } from './components/PreviewGrid';
 import { DownloadSection } from './components/DownloadSection';
 import { LightboxModal } from './components/LightboxModal';
 import { AllImagesModal } from './components/AllImagesModal';
-import { EngineDocsModal } from './components/EngineDocsModal';
-import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 
 import { EngineType, GeneratedImage, GenerateResult, GenerationProgress } from './types';
 import { DEFAULT_OUTPUT_COUNT } from './lib/constants';
 import { generateVariations } from './lib/imageProcessor';
-import { Play, Sparkles, AlertCircle, Layers } from 'lucide-react';
+import { Play, Sparkles, AlertCircle } from 'lucide-react';
 
 export default function App() {
   // State
@@ -40,7 +38,6 @@ export default function App() {
   // Modals state
   const [activeLightboxImage, setActiveLightboxImage] = useState<GeneratedImage | null>(null);
   const [isAllImagesModalOpen, setIsAllImagesModalOpen] = useState<boolean>(false);
-  const [isDocsModalOpen, setIsDocsModalOpen] = useState<boolean>(false);
 
   // Handle File Selection
   const handleFileSelect = (file: File) => {
@@ -141,13 +138,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#fafafa] flex flex-col justify-between text-[#1f1f1f]">
       {/* Header */}
-      <Header
-        onOpenFaq={() => {
-          const faqEl = document.getElementById('faq-section');
-          faqEl?.scrollIntoView({ behavior: 'smooth' });
-        }}
-        onOpenDocs={() => setIsDocsModalOpen(true)}
-      />
+      <Header />
 
       {/* Main Container */}
       <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-12">
@@ -198,13 +189,6 @@ export default function App() {
               <span className="text-xs uppercase font-extrabold tracking-wider text-[#fe4c6f] bg-[#fff0f3] px-3 py-1 rounded-full">
                 Langkah 3 dari 3
               </span>
-              <button
-                type="button"
-                onClick={() => setIsDocsModalOpen(true)}
-                className="text-xs font-bold text-[#fe4c6f] hover:underline"
-              >
-                Lihat Panduan Engine &rarr;
-              </button>
             </div>
             <EngineSelector
               selectedEngine={selectedEngine}
@@ -282,11 +266,6 @@ export default function App() {
             />
           </div>
         )}
-
-        {/* FAQ & Information Section */}
-        <div id="faq-section">
-          <FaqSection />
-        </div>
       </main>
 
       {/* Modals */}
@@ -300,11 +279,6 @@ export default function App() {
         images={result?.allImages || []}
         onClose={() => setIsAllImagesModalOpen(false)}
         onSelectImage={(img) => setActiveLightboxImage(img)}
-      />
-
-      <EngineDocsModal
-        isOpen={isDocsModalOpen}
-        onClose={() => setIsDocsModalOpen(false)}
       />
 
       {/* Footer */}
